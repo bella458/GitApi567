@@ -1,4 +1,7 @@
-""" Bella Manoim Testing git567
+""" Bella Manoim 
+
+    Testing git567
+    Unit tests to check the functions getCommits and getRepositories
 
 """
 import unittest
