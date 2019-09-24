@@ -31,8 +31,15 @@ def getRepositories(username):
 def getCommits(username, repositoryName):
     commitsResponse = requests.get("https://api.github.com/repos/" + username + "/" + repositoryName + "/commits")   
     commitsText = json.loads(commitsResponse.text)
-    commits = len(commitsText)
-    return (commits)
+    #print(commitsText)
+    
+    count = 0
+    for item in commitsText:
+        if 'committer' in item:
+            count = count + 1
+        else:
+            count  
+    return(count)
 
 def main():
     for repository in getRepositories("bella458"):
