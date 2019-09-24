@@ -4,7 +4,7 @@
 """
 import unittest
 
-from git567 import getCommits, getRepositories
+from GitApi567 import getCommits, getRepositories
 
 class Test(unittest.TestCase):
 
