@@ -37,7 +37,7 @@ def getCommits(username, repositoryName):
 def main():
     for repository in getRepositories("bella458"):
         commits = getCommits("bella458",repository)
-        print("Repository: " + repository + " Commits: " + str((commits)))
+        print("Repository: " + repository + "      Number of Commits: " + str((commits)))
         
 if __name__ == "__main__":
     main()
