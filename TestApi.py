@@ -1,24 +1,36 @@
 """ Bella Manoim 
     Testing git567
     Unit tests to check the functions getCommits and getRepositories
+    Updated: HW05a_Mocking
 """
 import unittest
-
+from unittest import mock
+from unittest.mock import MagicMock
+import GitApi567
 from GitApi567 import getCommits, getRepositories
 
-class Test(unittest.TestCase):
+class TestApi(unittest.TestCase):
+            
+    mockedReq = mock.Mock()
 
-    def test_getCommits1(self):
-        assert getCommits('bella458', 'SSW-555') == 4
+    #'requests.get' 
+    @mock.patch('GitApi567.getCommits')
+    def test_getCommits(self, mockedReq):
+        #use side effect 
+        mockedReq.side_effect = [3]
+        mockedReq.return_value = MagicMock(3)
+        # assign value to attribute in the mock
+        mockedReq.configure_mock(repo='SSW567')
+        assert mockedReq.repo == 'SSW567'
+        self.assertEqual(GitApi567.getCommits("Bella458", "SSW567"), 3)
 
-    def test_getCommits2(self):
-        assert getCommits('bella458', 'SSW567') == 3
-        
-    def test_getRepositories1(self):
-        self.assertIn("SSW-555", getRepositories("bella458"))
-    
-    def test_getRepositories2(self):
-        self.assertIn("SSW567", getRepositories("bella458"))
+    #'requests.get'
+    @mock.patch('GitApi567.getRepositories')   
+    def test_getRepositories(self, mockedReq):
+        mockedReq.return_value = ["SSW567"]
+        repos = GitApi567.getRepositories("Bella458")
+        self.assertIn("SSW567", repos)
+
 
 if __name__ == '__main__':
     print('Running Unit Tests')
