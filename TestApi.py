@@ -1,7 +1,9 @@
 """ Bella Manoim 
-    Testing git567
+    Test file for GitApi567
     Unit tests to check the functions getCommits and getRepositories
+    
     Updated: HW05a_Mocking
+    Purpose is to use a mocking package to "mock" this program's external dependence on GitHub
 """
 import unittest
 from unittest import mock
