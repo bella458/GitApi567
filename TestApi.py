@@ -28,9 +28,8 @@ class TestApi(unittest.TestCase):
     @mock.patch('GitApi567.getRepositories')   
     def test_getRepositories(self, mockedReq):
         mockedReq.return_value = ["SSW567"]
-        repos = GitApi567.getRepositories("Bella458")
-        self.assertIn("SSW567", repos)
-
+        mockedReq.side_effect = ["Bella458"]
+        self.assertIn(GitApi567.getRepositories("SSW567"), "Bella458")
 
 if __name__ == '__main__':
     print('Running Unit Tests')
